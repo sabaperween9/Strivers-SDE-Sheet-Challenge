@@ -1,4 +1,27 @@
-//  ====================== Approach - 1 =======================================================
+// ======================= Permutation of String ===============================================
+
+public class Solution {
+    public static List<String> findPermutations(String s) {
+        List<String> ans = new ArrayList<>();
+        helper("", s, ans);
+        return ans;
+    }
+
+    static void helper(String p, String s, List<String> ans) {
+        if(s.isEmpty()) {
+            ans.add(p);
+            return;
+        }
+        char ch = s.charAt(0);
+        for(int i = 0; i <= p.length(); i++) {
+            String p1 = p.substring(0,i);
+            String p2 = p.substring(i , p.length());
+            helper(p1+ch+p2, s.substring(1), ans);
+        }
+    }
+}
+
+//  ====================== permutation of Array Approach - 1 =======================================================
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
