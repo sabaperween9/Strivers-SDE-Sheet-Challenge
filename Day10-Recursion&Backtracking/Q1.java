@@ -1,4 +1,4 @@
-// ======================= Permutation of String ===============================================
+// ======================= Permutation of String ================================================
 
 public class Solution {
     public static List<String> findPermutations(String s) {
