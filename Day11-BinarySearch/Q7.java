@@ -2,8 +2,9 @@ public class Solution {
     public static long ayushGivesNinjatest(int days, int chap, int[] time) {
         
         long high = 0;
-        long low = 0;
+         long low = Long.MAX_VALUE;
         for(int x : time) {
+            low = Math.min(low, x);
             high += x;
         }
         long res = 0;
