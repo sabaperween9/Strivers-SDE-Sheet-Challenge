@@ -54,3 +54,31 @@ class Solution {
         return al;
     }
 }
+
+// ============ Approach -4 ===============================================
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> al=new ArrayList<>();
+        if(root==null)
+            return al;
+        Stack<TreeNode> st = new Stack<>();
+        while(!st.isEmpty() || root != null) {
+            if(root != null) {
+                st.push(root);
+                root = root.left;
+            }else  {
+                TreeNode temp = st.peek().right;
+                if(temp == null) {
+                    temp = st.pop();
+                    al.add(temp.val);
+                    while(!st.isEmpty() && temp == st.peek().right) {
+                        temp = st.pop();
+                        al.add(temp.val);
+                    }
+                }else 
+                    root = st.peek().right;
+            }
+        }
+        return al;
+    }
+}
